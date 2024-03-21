@@ -1,49 +1,65 @@
-// kelas duck sebagai kelas dasar untuk semua jenis bebek
-abstract class Duck{
-    void quack(){
-        System.out.println("Qwek Qwek");
-    }
+interface Quackable{
+    void quack();
+}
 
+interface Flyable{
+    void fly();
+}
+
+abstract class Duck{
     void swim(){
         System.out.println("Berenang");
     }
 
     abstract void display();
-
-    void fly(){
-        System.out.println("Terbang");
-    }
 }
 
 // kelas turunan Duck
-class MallardDuck extends Duck{
+class MallardDuck extends Duck implements Quackable, Flyable{
+    @Override
+    public void quack() {
+        System.out.println("Qwek Qwek");
+    }
+
+    @Override
+    public void fly() {
+        System.out.println("Terbang");
+    }
+
     @Override
     void display() {
         System.out.println("Tampilan MallardDuck");
     }
 }
 
-class RedHeadDuck extends Duck{
+class RedHeadDuck extends Duck implements Quackable, Flyable{
+    @Override
+    public void quack() {
+        System.out.println("Qwek Qwek");
+    }
+
+    @Override
+    public void fly() {
+        System.out.println("Terbang");
+    }
+
     @Override
     void display() {
         System.out.println("Tampilan RedHeadDuck");
     }
+
+
 }
 
-class RubberDuck extends Duck{
+class RubberDuck extends Duck implements Quackable{
     @Override
     void display() {
         System.out.println("Tampilan RubberDuck");
     }
 
     @Override
-    void quack() {
-        System.out.println("Bunyinya squeek, bukan qwak");
-    }
-
-    @Override
-    void fly() {
-        // Tidak ada implementasi, karena bebek mainan tidak dapat terbang
+    public void quack() {
+        System.out.println("Squeak");
     }
 }
 
@@ -54,18 +70,21 @@ class WoodenDuck extends Duck{
     }
 
     @Override
-    void quack() {
-        // tidak ada implementasi, karena bebek kayu tidak dapat bersuara
-    }
-
-    @Override
     void swim() {
         System.out.println("Mengambang");
     }
 
-    @Override
-    void fly() {
-        // Tidak ada implementasi, karena bebek kayu tidak dapat terbang
-    }
 }
 
+class ToyDUck extends Duck implements Flyable{
+
+    @Override
+    public void fly() {
+        System.out.println("Terbang seperti mainan");
+    }
+
+    @Override
+    void display() {
+        System.out.println("Tampilan ToyDuck");
+    }
+}
