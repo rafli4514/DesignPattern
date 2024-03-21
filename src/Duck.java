@@ -1,87 +1,104 @@
-interface QuackBehavior{
-    void quack();
+// Interface untuk perilaku bersuara (Quacking)
+interface QuackBehavior {
+    void quack(); // Metode untuk menghasilkan suara bebek
 }
 
-interface FlyBehavior{
-    void fly();
+// Interface untuk perilaku terbang (Flying)
+interface FlyBehavior {
+    void fly(); // Metode untuk menampilkan kemampuan terbang bebek
 }
 
-class Quack implements QuackBehavior{
-    @Override
-    public void quack(){
-        System.out.println("Qwek - Qwek");
-    }
-}
-
-class Squek implements QuackBehavior{
+// Implementasi Quack (suara bebek)
+class Quack implements QuackBehavior {
     @Override
     public void quack() {
-        System.out.println("Squek");
+        System.out.println("Qwek - Qwek"); // Mencetak suara bebek
     }
 }
 
-class MuteQuack implements QuackBehavior{
+// Implementasi Quack untuk bebek karet
+class Squek implements QuackBehavior {
     @Override
     public void quack() {
-        System.out.println("Tidak Bisa Bersuara");
+        System.out.println("Squek"); // Mencetak suara squek untuk bebek karet
     }
 }
 
-class FlyWithWings implements FlyBehavior{
+// Implementasi Quack untuk bebek bisu (tidak bersuara)
+class MuteQuack implements QuackBehavior {
+    @Override
+    public void quack() {
+        System.out.println("Tidak Bisa Bersuara"); // Mencetak pesan bebek tidak bisa bersuara
+    }
+}
 
+// Implementasi Fly untuk yang bisa terbang
+class FlyWithWings implements FlyBehavior {
     @Override
     public void fly() {
-        System.out.println("Terbang");
+        System.out.println("Terbang"); // Mencetak pesan bebek bisa terbang
     }
 }
 
-class FlyNoWay implements FlyBehavior{
-
+// Implementasi Fly untuk bebek yang tidak bisa terbang
+class FlyNoWay implements FlyBehavior {
     @Override
     public void fly() {
-        System.out.println("Tidak Bisa Terbang");
+        System.out.println("Tidak Bisa Terbang"); // Mencetak pesan bebek tidak bisa terbang
     }
 }
 
-class FkyWithRocketPower implements FlyBehavior{
-
+// Implementasi Fly untuk bebek dengan kekuatan roket
+class FlyWithRocketPower implements FlyBehavior {
     @Override
     public void fly() {
-        System.out.println("Cool, Terbang Menggunakan Rocket");
+        System.out.println("Cool, Terbang Menggunakan Rocket"); // Mencetak pesan bebek terbang dengan roket
     }
 }
 
-abstract class Duck{
+// Kelas abstrak untuk Duck
+abstract class Duck {
+    // Referensi ke objek untuk perilaku bersuara dan terbang
     QuackBehavior quackBehavior;
     FlyBehavior flyBehavior;
 
+    // Metode abstrak untuk menampilkan deskripsi bebek
     abstract void display();
 
-    void swim(){
+    // Metode default untuk berenang
+    void swim() {
         System.out.println("Berenang");
     }
 
-    void performQuack(){
+    // Metode untuk melakukan Quack
+    void performQuack() {
         quackBehavior.quack();
     }
 
-    void performFly(){
+    // Metode untuk melakukan Fly
+    void performFly() {
         flyBehavior.fly();
     }
 
-    void setQuackBehavior(FlyBehavior fb){
-        flyBehavior = fb;
+    // Metode untuk mengubah perilaku bersuara bebek
+    void setQuackBehavior(QuackBehavior qb) {
+        quackBehavior = qb;
     }
 
-    void setFlyBehavior(QuackBehavior qb){
-        quackBehavior = qb;
+    // Metode untuk mengubah perilaku terbang bebek
+    void setFlyBehavior(FlyBehavior fb) {
+        flyBehavior = fb;
     }
 }
 
-// kelas turunan Duck
-class MallardDuck extends Duck{
-    public MallardDuck(){
+// Kelas turunan Duck untuk bebek Mallard
+class MallardDuck extends Duck {
+    // Konstruktor untuk bebek Mallard
+    public MallardDuck() {
+        // Menyetel perilaku Quack ke Quack
         quackBehavior = new Quack();
+
+        // Menyetel perilaku Fly ke FlyWithWings
         flyBehavior = new FlyWithWings();
     }
 
@@ -90,9 +107,14 @@ class MallardDuck extends Duck{
     }
 }
 
-class RedheadDuck extends Duck{
-    public RedheadDuck(){
+// Kelas turunan Duck untuk bebek Redhead
+class RedheadDuck extends Duck {
+    // Konstruktor untuk bebek Redhead
+    public RedheadDuck() {
+        // Menyetel perilaku Quack ke Quack
         quackBehavior = new Quack();
+
+        // Menyetel perilaku Fly ke FlyWithWings
         flyBehavior = new FlyWithWings();
     }
 
@@ -102,9 +124,14 @@ class RedheadDuck extends Duck{
     }
 }
 
-class RubberDuck extends Duck{
-    public RubberDuck(){
+// Kelas turunan Duck untuk bebek karet
+class RubberDuck extends Duck {
+    // Konstruktor untuk bebek karet
+    public RubberDuck() {
+        // Menyetel perilaku Quack ke Squek
         quackBehavior = new Squek();
+
+        // Menyetel perilaku Fly ke FlyNoWay
         flyBehavior = new FlyNoWay();
     }
 
@@ -113,9 +140,14 @@ class RubberDuck extends Duck{
     }
 }
 
-class WoodenDuck extends Duck{
-    public WoodenDuck(){
-        quackBehavior = new Quack();
+// Kelas turunan Duck untuk bebek kayu
+class WoodenDuck extends Duck {
+    // Konstruktor untuk bebek kayu
+    public WoodenDuck() {
+        // Menyetel perilaku Quack ke Squek
+        quackBehavior = new Squek();
+
+        // Menyetel perilaku Fly ke FlyNoWay
         flyBehavior = new FlyNoWay();
     }
 
@@ -124,10 +156,13 @@ class WoodenDuck extends Duck{
     }
 }
 
+// Kelas turunan Duck untuk bebek model
 class ModelDuck extends Duck{
     ModelDuck(){
+        // Menyetel perilaku Quack ke Squek
+        quackBehavior = new Squek();
+        // Menyetel perilaku Fly ke FlyNoWay
         flyBehavior = new FlyNoWay();
-        quackBehavior = new Quack();
     }
 
     void display() {

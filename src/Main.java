@@ -23,22 +23,40 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Duck mallard = new MallardDuck();
+        mallard.display();
+        mallard.performFly();
+        mallard.performQuack();
 
-        System.out.println("Menu");
-        System.out.println("1.Penambahan");
-        System.out.println("2.Pengurangan");
-        System.out.println("3.Perkalian");
-        System.out.println("4.Pembagian");
+        Duck modelDuck = new ModelDuck();
+        modelDuck.performQuack();
+        modelDuck.performFly();
+        modelDuck.setFlyBehavior(new FlyWithRocketPower());
+        modelDuck.performFly();
 
-        System.out.println("Masukkan Pilihan menu");
-        int menu = input.nextInt();
+        Duck woodenDuck = new WoodenDuck();
+        woodenDuck.performQuack();
+        woodenDuck.setQuackBehavior(new MuteQuack());
+        woodenDuck.performQuack();
+        woodenDuck.performFly();
 
-        System.out.println("Masukkan angka pertama: ");
-        int x = input.nextInt();
 
-        System.out.println("Masukkan angka kedua: ");
-        int y = input.nextInt();
+//        Scanner input = new Scanner(System.in);
+//
+//        System.out.println("Menu");
+//        System.out.println("1.Penambahan");
+//        System.out.println("2.Pengurangan");
+//        System.out.println("3.Perkalian");
+//        System.out.println("4.Pembagian");
+//
+//        System.out.println("Masukkan Pilihan menu");
+//        int menu = input.nextInt();
+//
+//        System.out.println("Masukkan angka pertama: ");
+//        int x = input.nextInt();
+//
+//        System.out.println("Masukkan angka kedua: ");
+//        int y = input.nextInt();
 
 //        if (menu == 1){
 //            System.out.println(x + " + " + y + " = " + tambah(x, y));
@@ -52,26 +70,26 @@ public class Main {
 //            System.out.println("pilihan tidak valid");
 //        }
 
-        if (menu == 1){
-            Context Penambahan = new Context(new Tambah());
-            System.out.print(x + " + " + y + " = ");
-            System.out.println(Penambahan.ExecuteHitung(x, y));
-        } else if (menu == 2) {
-            Context Pengurangan = new Context(new Kurang());
-            System.out.print(x + " - " + y + " = ");
-            System.out.println(Pengurangan.ExecuteHitung(x, y));
-        } else if (menu == 3) {
-            Context Perkalian = new Context(new Kali());
-            System.out.print(x + " * " + y + " = ");
-            System.out.println(Perkalian.ExecuteHitung(x, y));
-        } else if (menu == 4) {
-            Context Pembagian = new Context(new Bagi());
-            System.out.print(x + " / " + y + " = ");
-
-            System.out.println(Pembagian.ExecuteHitung(x, y));
-        } else {
-            System.out.println("pilihan tidak valid");
-        }
+//        if (menu == 1){
+//            Context Penambahan = new Context(new Tambah());
+//            System.out.print(x + " + " + y + " = ");
+//            System.out.println(Penambahan.ExecuteHitung(x, y));
+//        } else if (menu == 2) {
+//            Context Pengurangan = new Context(new Kurang());
+//            System.out.print(x + " - " + y + " = ");
+//            System.out.println(Pengurangan.ExecuteHitung(x, y));
+//        } else if (menu == 3) {
+//            Context Perkalian = new Context(new Kali());
+//            System.out.print(x + " * " + y + " = ");
+//            System.out.println(Perkalian.ExecuteHitung(x, y));
+//        } else if (menu == 4) {
+//            Context Pembagian = new Context(new Bagi());
+//            System.out.print(x + " / " + y + " = ");
+//
+//            System.out.println(Pembagian.ExecuteHitung(x, y));
+//        } else {
+//            System.out.println("pilihan tidak valid");
+//        }
 
 
 
@@ -83,6 +101,8 @@ public class Main {
 //
 //        Context Pembagian = new Context(new Bagi());
 //        System.out.println("164 : 6 = " + Pembagian.ExecuteHitung(164, 6));
+
+
 
     }
 }
